@@ -1,3 +1,4 @@
+using System;
 using Expense.Service;
 using Expense.Service.Exceptions;
 using Expense.Service.Expense;
@@ -59,10 +60,12 @@ namespace Expense.Service.Test
             // given
             Project project = new Project(ProjectType.UNEXPECTED_PROJECT_TYPE, "invalid project");
             // when
+            Action action = () => ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
             // ExpenseType expenseType = ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
             // then
-            Assert.Throws<UnexpectedProjectTypeException>(() =>
-                ExpenseService.GetExpenseCodeByProjectTypeAndName(project));
+            //Assert.Throws<UnexpectedProjectTypeException>(() =>
+            //    ExpenseService.GetExpenseCodeByProjectTypeAndName(project));
+            Assert.Throws<UnexpectedProjectTypeException>(action);
         }
     }
 }
